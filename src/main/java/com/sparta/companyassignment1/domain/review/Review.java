@@ -1,7 +1,9 @@
 package com.sparta.companyassignment1.domain.review;
 
+import com.sparta.companyassignment1.api.review.request.ReviewRequestDto;
 import com.sparta.companyassignment1.domain.BaseTimeEntity;
 import jakarta.persistence.*;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -19,9 +21,18 @@ public class Review extends BaseTimeEntity {
     @Column(name = "userId", nullable = false)
     private Long userId;
     @Column(name = "score", nullable = false)
-    private float score;
-    @Column(name = "contents", nullable = false, length = 1000)
+    private Float score;
+    @Column(name = "content", nullable = false, length = 1000)
     private String content;
-    @Column(name = "photoUrl")
-    private String photoUrl;
+    @Column(name = "imageUrl")
+    private String imageUrl;
+
+    @Builder
+    public Review(Long productId, Long userId, Float score, String content, String imageUrl) {
+        this.productId = productId;
+        this.userId = userId;
+        this.score = score;
+        this.content = content;
+        this.imageUrl = imageUrl;
+    }
 }

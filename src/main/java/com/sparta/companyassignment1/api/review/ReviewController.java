@@ -1,8 +1,12 @@
 package com.sparta.companyassignment1.api.review;
 
+import com.sparta.companyassignment1.api.review.request.ReviewRequestDto;
 import com.sparta.companyassignment1.api.review.response.ReviewResponseDto;
 import com.sparta.companyassignment1.domain.review.ReviewService;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.IOException;
 
 @RestController
 @RequestMapping("/products/{productId}/reviews")
@@ -23,8 +27,11 @@ public class ReviewController {
     }
 
     @PostMapping
-    public void createReview(@PathVariable long productId){
-
+    public String createReview(@PathVariable Long productId
+            , @RequestPart("reviewRequest") ReviewRequestDto reviewRequestDto
+            , @RequestPart(required = false) MultipartFile image) throws IOException {
+        reviewService.create(productId, reviewRequestDto, image);
+        return "redirect:/";
     }
 
 }

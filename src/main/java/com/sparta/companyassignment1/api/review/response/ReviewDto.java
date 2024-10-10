@@ -9,6 +9,7 @@ public class ReviewDto{
     private Long userId;
     private Float score;
     private String content;
+    private String imageUrl;
     private String createdAt;
 
     public ReviewDto(Review review){
@@ -16,6 +17,7 @@ public class ReviewDto{
         this.userId = review.getUserId();
         this.score = review.getScore();
         this.content = review.getContent();
+        this.imageUrl = review.getImageUrl();
         this.createdAt = review.getCreatedAt().toString();
     }
 }

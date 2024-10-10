@@ -21,4 +21,8 @@ public class Product extends BaseTimeEntity {
     @Column(name="score", nullable = false)
     private Float score;
 
+    public void update(long reviewCount, float reviewScore) {
+        this.reviewCount = reviewCount;
+        this.score = reviewScore;
+    }
 }
