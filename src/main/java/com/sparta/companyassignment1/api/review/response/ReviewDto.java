@@ -1,20 +1,21 @@
 package com.sparta.companyassignment1.api.review.response;
 
 import com.sparta.companyassignment1.domain.review.Review;
+import lombok.Getter;
 
-public record ReviewDto(Long id,
-                        Long userId,
-                        Float score,
-                        String content,
-                        String createdAt) {
-    public ReviewDto{
-    }
+@Getter
+public class ReviewDto{
+    private Long id;
+    private Long userId;
+    private Float score;
+    private String content;
+    private String createdAt;
 
     public ReviewDto(Review review){
-        this(review.getId()
-                , review.getUserId()
-                ,review.getScore()
-                ,review.getContent()
-                ,review.getCreatedAt().toString());
+        this.id = review.getId();
+        this.userId = review.getUserId();
+        this.score = review.getScore();
+        this.content = review.getContent();
+        this.createdAt = review.getCreatedAt().toString();
     }
 }
