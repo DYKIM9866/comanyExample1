@@ -25,17 +25,10 @@ public class ReviewService {
 
     public ReviewResponseDto listRecently(Long productId, Long cursor, Integer size){
         Product product = productRepository.findById(productId)
-                .orElseThrow(()->new RuntimeException());
-
-        List<Review> reviews;
+                .orElseThrow(()-> new RuntimeException("해당 상품이 존재 하지 않습니다."));
 
         PageRequest pageRequest = PageRequest.of(0,size, Sort.by("createdAt").descending());
-
-        if(cursor == null){
-            reviews = reviewRepository.findTopByProductIdOrderByCreatedAtDesc(productId, pageRequest);
-        }else{
-            reviews = reviewRepository.findByProductIdAndIdLessThanOrderByCreatedAtDesc(productId,cursor, pageRequest);
-        }
+        List<Review> reviews = reviewRepository.findByProductIdAndIdLessThanOrderByCreatedAtDesc(productId,cursor, pageRequest);
 
         List<ReviewDto> list = reviews.stream().map(ReviewDto::new).toList();
 
@@ -53,7 +46,11 @@ public class ReviewService {
     }
 
     @Transactional
-    public void create(Long productId, ReviewRequestDto reviewRequestDto, MultipartFile image) throws IOException {
+    public void createReview(Long productId, ReviewRequestDto reviewRequestDto, MultipartFile image) throws IOException {
+        //상품 조회
+        Product product = productRepository.findById(productId)
+                .orElseThrow(() -> new RuntimeException("해당 상품이 존재하지 않습니다."));
+
         //이미지 저장
         ImageHandler imageHandler = new ImageHandler();
         String saveFile = imageHandler.save(image);
@@ -69,10 +66,6 @@ public class ReviewService {
 
         //저장
         reviewRepository.save(review);
-
-        //상품 조회
-        Product product = productRepository.findById(productId)
-                .orElseThrow(() -> new RuntimeException());
 
         float sumScore = reviewRepository.sumScoreByProductId(productId);
         float newScore = sumScore /(product.getReviewCount()+1);

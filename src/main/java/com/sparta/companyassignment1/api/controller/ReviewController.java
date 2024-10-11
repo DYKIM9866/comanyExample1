@@ -21,8 +21,9 @@ public class ReviewController {
     }
 
     @GetMapping
-    public ReviewResponseDto getReviews(Long productId, Long cursor, Integer size){
-        if(size == null) size = DEFAULT_SIZE;
+    public ReviewResponseDto getReviews(Long productId
+            , Long cursor
+            , @RequestParam(defaultValue = "10") Integer size){
         return reviewService.listRecently(productId, cursor, size);
     }
 
@@ -30,7 +31,7 @@ public class ReviewController {
     public String createReview(@PathVariable Long productId
             , @RequestPart("reviewRequest") ReviewRequestDto reviewRequestDto
             , @RequestPart(required = false) MultipartFile image) throws IOException {
-        reviewService.create(productId, reviewRequestDto, image);
+        reviewService.createReview(productId, reviewRequestDto, image);
         return "redirect:/";
     }
 
