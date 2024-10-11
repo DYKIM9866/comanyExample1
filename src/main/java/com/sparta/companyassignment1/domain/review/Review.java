@@ -1,6 +1,5 @@
 package com.sparta.companyassignment1.domain.review;
 
-import com.sparta.companyassignment1.api.review.request.ReviewRequestDto;
 import com.sparta.companyassignment1.domain.BaseTimeEntity;
 import jakarta.persistence.*;
 import lombok.Builder;

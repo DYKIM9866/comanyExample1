@@ -1,4 +1,4 @@
-package com.sparta.companyassignment1.api.review.request;
+package com.sparta.companyassignment1.api.request;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;

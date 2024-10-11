@@ -1,8 +1,8 @@
 package com.sparta.companyassignment1.domain.review;
 
-import com.sparta.companyassignment1.api.review.request.ReviewRequestDto;
-import com.sparta.companyassignment1.api.review.response.ReviewDto;
-import com.sparta.companyassignment1.api.review.response.ReviewResponseDto;
+import com.sparta.companyassignment1.api.request.ReviewRequestDto;
+import com.sparta.companyassignment1.api.response.ReviewDto;
+import com.sparta.companyassignment1.api.response.ReviewResponseDto;
 import com.sparta.companyassignment1.domain.product.Product;
 import com.sparta.companyassignment1.domain.product.repository.ProductRepository;
 import com.sparta.companyassignment1.domain.review.repository.ReviewRepository;

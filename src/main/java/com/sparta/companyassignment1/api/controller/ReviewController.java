@@ -1,7 +1,7 @@
-package com.sparta.companyassignment1.api.review;
+package com.sparta.companyassignment1.api.controller;
 
-import com.sparta.companyassignment1.api.review.request.ReviewRequestDto;
-import com.sparta.companyassignment1.api.review.response.ReviewResponseDto;
+import com.sparta.companyassignment1.api.request.ReviewRequestDto;
+import com.sparta.companyassignment1.api.response.ReviewResponseDto;
 import com.sparta.companyassignment1.domain.review.ReviewService;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;

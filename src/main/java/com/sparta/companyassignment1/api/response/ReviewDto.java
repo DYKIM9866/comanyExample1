@@ -1,7 +1,9 @@
-package com.sparta.companyassignment1.api.review.response;
+package com.sparta.companyassignment1.api.response;
 
 import com.sparta.companyassignment1.domain.review.Review;
 import lombok.Getter;
+
+import java.time.LocalDateTime;
 
 @Getter
 public class ReviewDto{
@@ -10,7 +12,7 @@ public class ReviewDto{
     private Float score;
     private String content;
     private String imageUrl;
-    private String createdAt;
+    private LocalDateTime createdAt;
 
     public ReviewDto(Review review){
         this.id = review.getId();
@@ -18,6 +20,6 @@ public class ReviewDto{
         this.score = review.getScore();
         this.content = review.getContent();
         this.imageUrl = review.getImageUrl();
-        this.createdAt = review.getCreatedAt().toString();
+        this.createdAt = review.getCreatedAt();
     }
 }

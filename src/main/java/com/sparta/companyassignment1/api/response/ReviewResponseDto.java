@@ -1,4 +1,4 @@
-package com.sparta.companyassignment1.api.review.response;
+package com.sparta.companyassignment1.api.response;
 
 import lombok.Getter;
 
